@@ -1,0 +1,196 @@
+@reference "tailwindcss";
+
+@utility btn-filled {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 font-medium text-sm leading-5 tracking-[0.00625rem] rounded-[1.25rem] border-none cursor-pointer select-none whitespace-nowrap min-h-10 bg-primary text-on-primary shadow-level-0 transition-[background-color,box-shadow,transform] duration-200 ease-in-out;
+
+    &:hover {
+        @apply shadow-level-1;
+        background-color: color-mix(in srgb, var(--color-on-primary) 8%, var(--color-primary));
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-primary outline-offset-2;
+        background-color: color-mix(in srgb, var(--color-on-primary) 12%, var(--color-primary));
+    }
+
+    &:active {
+        @apply shadow-level-0 scale-98;
+        background-color: color-mix(in srgb, var(--color-on-primary) 12%, var(--color-primary));
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+@utility btn-filled-tonal {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 font-medium text-sm leading-5 tracking-[0.00625rem] rounded-[1.25rem] border-none cursor-pointer select-none whitespace-nowrap min-h-10 bg-secondary-container text-on-secondary-container shadow-level-0 transition-[background-color,box-shadow,transform] duration-200 ease-in-out;
+
+    &:hover {
+        @apply shadow-level-1;
+        background-color: color-mix(
+                in srgb,
+                var(--color-on-secondary-container) 8%,
+                var(--color-secondary-container)
+        );
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-secondary outline-offset-2;
+        background-color: color-mix(
+                in srgb,
+                var(--color-on-secondary-container) 12%,
+                var(--color-secondary-container)
+        );
+    }
+
+    &:active {
+        @apply shadow-level-0 scale-98;
+        background-color: color-mix(
+                in srgb,
+                var(--color-on-secondary-container) 12%,
+                var(--color-secondary-container)
+        );
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+@utility btn-outlined {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 font-medium text-sm leading-5 tracking-[0.00625rem] rounded-[1.25rem] border border-outline cursor-pointer select-none whitespace-nowrap min-h-10 bg-transparent text-primary transition-[background-color,border-color,transform] duration-200 ease-in-out;
+
+    &:hover {
+        @apply border-outline;
+        background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-primary outline-offset-2 border-primary;
+        background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    }
+
+    &:active {
+        @apply scale-98;
+        background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+@utility btn-text {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2.5 font-medium text-sm leading-5 tracking-[0.00625rem] rounded-[1.25rem] border-none cursor-pointer select-none whitespace-nowrap min-h-10 bg-transparent text-primary transition-[background-color,transform] duration-200 ease-in-out;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-primary outline-offset-2;
+        background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    }
+
+    &:active {
+        @apply scale-98;
+        background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+/* ============================================
+   ICON BUTTON UTILITIES
+   ============================================ */
+
+@utility btn-icon {
+    @apply inline-flex items-center justify-center p-2 text-2xl rounded-full border-none cursor-pointer select-none transition-[background-color,transform] duration-200 ease-in-out size-10 bg-transparent text-on-surface-variant;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-on-surface-variant) 8%, transparent);
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-primary outline-offset-2;
+        background-color: color-mix(in srgb, var(--color-on-surface-variant) 12%, transparent);
+    }
+
+    &:active {
+        @apply scale-95;
+        background-color: color-mix(in srgb, var(--color-on-surface-variant) 12%, transparent);
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+@utility btn-icon-filled {
+    @apply inline-flex items-center justify-center p-2 text-2xl rounded-full border-none cursor-pointer select-none transition-[background-color,transform] duration-200 ease-in-out size-10 bg-primary text-on-primary;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-on-primary) 8%, var(--color-primary));
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-primary outline-offset-2;
+        background-color: color-mix(in srgb, var(--color-on-primary) 12%, var(--color-primary));
+    }
+
+    &:active {
+        @apply scale-95;
+        background-color: color-mix(in srgb, var(--color-on-primary) 12%, var(--color-primary));
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+@utility btn-icon-filled-tonal {
+    @apply inline-flex items-center justify-center p-2 text-2xl rounded-full border-none cursor-pointer select-none transition-[background-color,transform] duration-200 ease-in-out size-10 bg-secondary-container text-on-secondary-container;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-on-secondary-container) 8%, var(--color-secondary-container));
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-secondary outline-offset-2;
+        background-color: color-mix(in srgb, var(--color-on-secondary-container) 12%, var(--color-secondary-container));
+    }
+
+    &:active {
+        @apply scale-95;
+        background-color: color-mix(in srgb, var(--color-on-secondary-container) 12%, var(--color-secondary-container));
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
+
+@utility btn-icon-outlined {
+    @apply inline-flex items-center justify-center p-2 text-2xl rounded-full border border-outline cursor-pointer select-none transition-[background-color,border-color,transform] duration-200 ease-in-out size-10 bg-transparent text-on-surface-variant;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-on-surface-variant) 8%, transparent);
+    }
+
+    &:focus-visible {
+        @apply outline-2 outline-primary outline-offset-2 border-primary;
+        background-color: color-mix(in srgb, var(--color-on-surface-variant) 12%, transparent);
+    }
+
+    &:active {
+        @apply scale-95;
+        background-color: color-mix(in srgb, var(--color-on-surface-variant) 12%, transparent);
+    }
+
+    &:disabled {
+        @apply opacity-38 cursor-not-allowed pointer-events-none;
+    }
+}
