@@ -1,13 +1,26 @@
 "use server";
-import { auth } from "@/lib/auth/server";
-import { redirect } from "next/navigation";
+import {auth} from "@/lib/auth/server";
+import {redirect} from "next/navigation";
+import {AUTH_CONSTANTS} from "@/shared/constants";
+import {signInSchema} from "@/shared/zod-schema";
+import {validateFormData} from "@/lib/auth/utils/validate-form-data";
 
 export async function signIn(formData: FormData) {
-  const { data, error } = await auth.signIn.email({
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  });
+    const validatedFields = validateFormData({schema: signInSchema, formData});
 
-  if (error) return { error: error.message };
-  redirect("/dashboard");
+    if(validatedFields.error) return {
+        error: validatedFields.error
+    }
+
+    const {email, password} = validatedFields.data;
+
+    const {error} = await auth.signIn.email({
+        email,
+        password
+    });
+
+    if (error) {
+        return { serverError: "Invalid email or password." };
+    }
+    redirect(AUTH_CONSTANTS.redirectAfterSignIn);
 }

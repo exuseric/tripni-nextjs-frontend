@@ -1,12 +1,23 @@
-import { auth } from "@/lib/auth/server";
-import { ChangePasswordType } from "@/shared/types";
+import {auth} from "@/lib/auth/server";
+import {validateFormData} from "@/lib/auth/utils/validate-form-data";
+import {changePasswordSchema} from "@/shared/zod-schema";
+import {redirect} from "next/navigation";
+import {AUTH_CONSTANTS} from "@/shared/constants";
 
-export async function changePassword({ currentPassword, newPassword }: ChangePasswordType) {
-  const { data, error } = await auth.changePassword({
+export async function changePassword(formData: FormData) {
+  const validatedFields = validateFormData({schema: changePasswordSchema, formData})
+
+  if(validatedFields.error) return { error: validatedFields.error }
+
+  const { currentPassword, newPassword } = validatedFields.data;
+
+  const { error } = await auth.changePassword({
     currentPassword,
     newPassword,
     revokeOtherSessions: true,
   });
 
-  return { data, error };
+  if(error) return { serverError: "Invalid current password." }
+
+  redirect(AUTH_CONSTANTS.redirectTo)
 }
