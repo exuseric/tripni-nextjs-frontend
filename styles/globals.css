@@ -145,6 +145,10 @@ body {
     @apply bg-surface text-on-surface font-sans;
 }
 
+a, button {
+    @apply cursor-pointer;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
     animation-duration: var(--duration-short-4);
