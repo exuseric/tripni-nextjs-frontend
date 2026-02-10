@@ -6,6 +6,8 @@ import { user } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function POST(req: Request) {
+  console.log("Webhook received"); // Debug log
+
   const headerPayload = await headers();
   const svix_id = headerPayload.get("svix-id");
   const svix_timestamp = headerPayload.get("svix-timestamp");
