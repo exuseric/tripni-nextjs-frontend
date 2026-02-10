@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "eslint && tsc --noEmit"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.37.3",
+    "@phosphor-icons/react": "^2.1.10",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",

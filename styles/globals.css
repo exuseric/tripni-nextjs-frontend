@@ -95,6 +95,11 @@
     --transition-timing-function-out: var(--easing-standard-decelerate);
     --transition-timing-function-in-out: var(--easing-standard);
 
+    --ease-transition-linear: var(--easing-linear);
+    --ease-transition-in: var(--easing-standard-accelerate);
+    --ease-transition-out: var(--easing-standard-decelerate);
+    --ease-transition-in-out: var(--easing-standard);
+
     /* Animation Duration */
     --animation-duration-75: var(--duration-short-1);
     --animation-duration-100: var(--duration-short-2);
@@ -106,12 +111,13 @@
     --animation-duration-1000: var(--duration-extra-long-4);
 
     /* Animation Timing Function */
-    --animation-timing-function-linear: var(--easing-linear);
-    --animation-timing-function-in: var(--easing-emphasized-accelerate);
-    --animation-timing-function-out: var(--easing-emphasized-decelerate);
-    --animation-timing-function-in-out: var(--easing-emphasized);
+    --ease-animation-linear: var(--easing-linear);
+    --ease-animation-in: var(--easing-emphasized-accelerate);
+    --ease-animation-out: var(--easing-emphasized-decelerate);
+    --ease-animation-in-out: var(--easing-emphasized);
 
     --spacing-container-block: theme('spacing.32');
+    --spacing-nav-height: theme('spacing.12');
     /* Elevation Level 0 - No elevation */
     --shadow-level-0: none;
 
