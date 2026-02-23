@@ -1,40 +1,19 @@
-import {
-  pgTable,
-  unique,
-  pgPolicy,
-  text,
-  boolean,
-  timestamp,
-  foreignKey,
-  serial,
-  doublePrecision,
-  jsonb,
-  integer,
-} from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
-import { authenticatedRole } from "drizzle-orm/neon";
+import {boolean, doublePrecision, integer, jsonb, pgTable, serial, text, timestamp} from 'drizzle-orm/pg-core';
+import {sql} from 'drizzle-orm';
+
 
 export const user = pgTable(
   "user",
   {
-    id: text().primaryKey().notNull(),
-    name: text(),
+    userId: text("user_id").primaryKey().notNull(),
+    firstName: text("first_name").default(""),
+    lastName: text("last_name").default(""),
     email: text().notNull(),
     avatarUrl: text("avatar_url"),
     emailVerified: boolean("email_verified").default(false),
     createdAt: timestamp("created_at", { withTimezone: true, mode: "string" }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true, mode: "string" }).defaultNow(),
-  },
-  (table) => [
-    unique("user_email_key").on(table.email),
-    pgPolicy("manage_own_user", {
-      as: "permissive",
-      for: "all",
-      to: authenticatedRole,
-      using: sql`(id = auth.user_id())`,
-      withCheck: sql`(id = auth.user_id())`,
-    }),
-  ],
+  }
 );
 
 export const trip = pgTable(
@@ -55,30 +34,9 @@ export const trip = pgTable(
     userId: text("user_id")
       .default(sql`(auth.user_id())`)
       .notNull(),
-    parentTripId: integer("parent_trip_id"),
     createdAt: timestamp("created_at", { withTimezone: true, mode: "string" }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true, mode: "string" }).defaultNow(),
-  },
-  (table) => [
-    foreignKey({
-      columns: [table.userId],
-      foreignColumns: [user.id],
-      name: "trip_user_id_fkey",
-    }).onDelete("cascade"),
-    foreignKey({
-      columns: [table.parentTripId],
-      foreignColumns: [table.id],
-      name: "trip_parent_trip_id_fkey",
-    }).onDelete("cascade"),
-    pgPolicy("modify_own_trips", {
-      as: "permissive",
-      for: "all",
-      to: authenticatedRole,
-      using: sql`(user_id = auth.user_id())`,
-      withCheck: sql`(user_id = auth.user_id())`,
-    }),
-    pgPolicy("view_trips", { as: "permissive", for: "select", to: ["public"] }),
-  ],
+  }
 );
 
 export const destination = pgTable(
@@ -99,25 +57,5 @@ export const destination = pgTable(
       .notNull(),
     createdAt: timestamp("created_at", { withTimezone: true, mode: "string" }).defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true, mode: "string" }).defaultNow(),
-  },
-  (table) => [
-    foreignKey({
-      columns: [table.tripId],
-      foreignColumns: [trip.id],
-      name: "destination_trip_id_fkey",
-    }).onDelete("cascade"),
-    foreignKey({
-      columns: [table.userId],
-      foreignColumns: [user.id],
-      name: "destination_user_id_fkey",
-    }).onDelete("cascade"),
-    pgPolicy("modify_own_destinations", {
-      as: "permissive",
-      for: "all",
-      to: authenticatedRole,
-      using: sql`(user_id = auth.user_id())`,
-      withCheck: sql`(user_id = auth.user_id())`,
-    }),
-    pgPolicy("view_destinations", { as: "permissive", for: "select", to: ["public"] }),
-  ],
+  }
 );

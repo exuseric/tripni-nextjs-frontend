@@ -28,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <GlobalProviders>{children}</GlobalProviders>
+        <GlobalProviders>
+            {children}
+        </GlobalProviders>
       </body>
       <SpeedInsights />
     </html>
