@@ -162,3 +162,23 @@
         @apply opacity-38 cursor-not-allowed pointer-events-none;
     }
 }
+
+/* ============================================
+   CRUD TEST PANEL UTILITIES
+   ============================================ */
+
+@utility btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg;
+}
+
+@utility btn-danger {
+    @apply bg-red-500 text-white;
+    &:hover {
+        @apply bg-red-700;
+    }
+}
+
+@utility input {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm;
+}
+
