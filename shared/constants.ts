@@ -4,5 +4,7 @@ export const AUTH_CONSTANTS = {
 }
 
 export const API_URLS = {
-    trips: "/trips"
+    trips: "/trips",
+    users: "/auth",
+    destinations: "/destinations",
 }
