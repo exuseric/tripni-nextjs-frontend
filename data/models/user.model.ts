@@ -1,6 +1,3 @@
-import {user} from '@/server/db/schema';
-
-
 export interface User {
   userId: string;
   firstName: string;
@@ -27,5 +24,3 @@ export interface UpdateUser {
   avatarUrl?: string | null;
   emailVerified?: boolean;
 }
-
-export const UserModel = user

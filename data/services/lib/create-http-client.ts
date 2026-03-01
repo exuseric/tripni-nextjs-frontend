@@ -6,4 +6,10 @@ async function getAuthHeaders(): Promise<Record<string, string>> {
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
-export const httpClient = new HttpClient(process.env.NEXT_PUBLIC_API_URL!, getAuthHeaders);
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+if (!apiUrl) {
+  throw new Error("NEXT_PUBLIC_API_URL environment variable is not defined");
+}
+
+export const httpClient = new HttpClient(apiUrl, getAuthHeaders);
