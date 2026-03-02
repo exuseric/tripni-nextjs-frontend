@@ -1,5 +1,5 @@
 import { CreateTrip, Trip } from "@/data/models/trip.model";
-import { API_URLS } from "@/shared/constants";
+import { API_URLS } from "@/common/constants";
 import { BaseService } from "@/data/services/base.service";
 import { httpClient } from "@/data/services/lib/create-http-client";
 

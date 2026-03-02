@@ -8,3 +8,8 @@ export const API_URLS = {
     users: "/auth",
     destinations: "/destinations",
 }
+
+export const TOP_LEVEL_LINKS = {
+    home: "/",
+    trips: "/trips"
+};
