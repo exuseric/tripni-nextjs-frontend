@@ -1,4 +1,4 @@
-import { changePasswordSchema, signUpZodSchema } from "@/shared/zod-schema";
+import { changePasswordSchema, signUpZodSchema } from "@/common/zod-schema";
 import * as z from "zod";
 
 export type SignUpType = z.input<typeof signUpZodSchema>;

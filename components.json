@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/common/components",
+    "utils": "@/common/lib/utils",
+    "ui": "@/common/ui",
+    "lib": "@/common/lib",
+    "hooks": "@/common/hooks"
+  },
+  "registries": {
+    "@react-aria": "https://react-aria.adobe.com/registry/{name}.json"
+  }
+}

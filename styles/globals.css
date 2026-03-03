@@ -2,11 +2,19 @@
 @import "./theme.css";
 @import "./animations.css";
 @import "./buttons.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/*---break---*/
+@plugin "tailwindcss-react-aria-components";
+@plugin "tailwindcss-animate";
+/*---break---*/
+/*---break---*/
+@custom-variant dark (&:is(.dark *));
 
 /*noinspection CssUnresolvedCustomProperty*/
 @theme inline {
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+    --font-heading: var(--font-family-heading);
+    --font-body: var(--font-family-body);
 
     /* Primary Colors */
     --color-primary: var(--md-sys-color-primary);
@@ -116,42 +124,33 @@
     --ease-animation-out: var(--easing-emphasized-decelerate);
     --ease-animation-in-out: var(--easing-emphasized);
 
-    --spacing-container-block: theme('spacing.32');
-    --spacing-nav-height: theme('spacing.12');
+    --spacing-container-block: theme("spacing.32");
+    --spacing-nav-height: theme("spacing.12");
     /* Elevation Level 0 - No elevation */
     --shadow-level-0: none;
 
     /* Elevation Level 1 - 1dp (e.g., cards at rest) */
-    --shadow-level-1:
-            0px 1px 2px 0px rgb(var(--color-shadow) / 0.3),
-            0px 1px 3px 1px rgb(var(--color-shadow) / 0.15);
+    --shadow-level-1: 0px 1px 2px 0px rgb(var(--color-shadow) / 0.3), 0px 1px 3px 1px rgb(var(--color-shadow) / 0.15);
 
     /* Elevation Level 2 - 3dp (e.g., buttons, FAB at rest) */
-    --shadow-level-2:
-            0px 1px 2px 0px rgb(var(--color-shadow) / 0.3),
-            0px 2px 6px 2px rgb(var(--color-shadow) / 0.15);
+    --shadow-level-2: 0px 1px 2px 0px rgb(var(--color-shadow) / 0.3), 0px 2px 6px 2px rgb(var(--color-shadow) / 0.15);
 
     /* Elevation Level 3 - 6dp (e.g., cards on hover, menus) */
-    --shadow-level-3:
-            0px 1px 3px 0px rgb(var(--color-shadow) / 0.3),
-            0px 4px 8px 3px rgb(var(--color-shadow) / 0.15);
+    --shadow-level-3: 0px 1px 3px 0px rgb(var(--color-shadow) / 0.3), 0px 4px 8px 3px rgb(var(--color-shadow) / 0.15);
 
     /* Elevation Level 4 - 8dp (e.g., dialogs) */
-    --shadow-level-4:
-            0px 2px 3px 0px rgb(var(--color-shadow) / 0.3),
-            0px 6px 10px 4px rgb(var(--color-shadow) / 0.15);
+    --shadow-level-4: 0px 2px 3px 0px rgb(var(--color-shadow) / 0.3), 0px 6px 10px 4px rgb(var(--color-shadow) / 0.15);
 
     /* Elevation Level 5 - 12dp (e.g., navigation drawer) */
-    --shadow-level-5:
-            0px 4px 4px 0px rgb(var(--color-shadow) / 0.3),
-            0px 8px 12px 6px rgb(var(--color-shadow) / 0.15);
+    --shadow-level-5: 0px 4px 4px 0px rgb(var(--color-shadow) / 0.3), 0px 8px 12px 6px rgb(var(--color-shadow) / 0.15);
 }
 
 body {
-    @apply bg-surface text-on-surface font-sans;
+    @apply bg-surface text-on-surface font-body;
 }
 
-a, button {
+a,
+button {
     @apply cursor-pointer;
 }
 
