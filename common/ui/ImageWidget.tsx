@@ -29,9 +29,19 @@ type ImageWidgetProps = {
   className?: string;
   shape?: "rounded" | "circle" | "semicircle-t" | "semicircle-b" | "semicircle-l" | "semicircle-r";
   aspect?: "square" | "portrait" | "landscape";
+  width?: number;
+  height?: number;
 };
 
-export const ImageWidget = ({ src = "https://placehold.co/400.webp", alt, className, shape, aspect }: ImageWidgetProps) => {
+export const ImageWidget = ({
+  src = "https://placehold.co/400.webp",
+  alt,
+  className,
+  shape,
+  aspect,
+  width = 500,
+  height = 500,
+}: ImageWidgetProps) => {
   return (
     <div className={imageWidgetStyles({ shape, aspect, className })}>
       <Image
@@ -40,8 +50,8 @@ export const ImageWidget = ({ src = "https://placehold.co/400.webp", alt, classN
         style={{ objectFit: "cover" }}
         role={alt ? undefined : "presentation"}
         className="w-full h-full"
-        width={500}
-        height={500}
+        width={width}
+        height={height}
       />
     </div>
   );
