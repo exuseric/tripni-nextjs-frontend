@@ -30,8 +30,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${headingFamily.variable} ${bodyFamily.variable} antialiased`}>
         <GlobalProviders>{children}</GlobalProviders>
+        <SpeedInsights />
       </body>
-      <SpeedInsights />
     </html>
   );
 }
