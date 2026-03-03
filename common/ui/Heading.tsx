@@ -6,8 +6,8 @@ import { tv } from "tailwind-variants";
 const headingStyles = tv({
   slots: {
     wrapper: "flex flex-col gap-2",
-    title: "text-4xl font-bold tracking-tight font-heading",
-    description: "text-lg text-muted-foreground",
+    title: "text-4xl md:text-5xl font-[900] tracking-tight font-heading max-w-[15ch] capitalize",
+    description: "text-lg text-muted-foreground max-w-prose",
     actions: "flex flex-wrap gap-4 mt-4",
   },
   variants: {

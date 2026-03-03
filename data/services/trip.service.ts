@@ -1,10 +1,10 @@
 import { CreateTrip, Trip } from "@/data/models/trip.model";
-import { API_URLS } from "@/common/constants";
+import { LINKS } from "@/common/constants/url.constant";
 import { BaseService } from "@/data/services/base.service";
 import { httpClient } from "@/data/services/lib/create-http-client";
 
 class TripService extends BaseService<Trip, CreateTrip> {
-  constructor(path = API_URLS.trips) {
+  constructor(path = LINKS.API.trips) {
     super(path, httpClient);
   }
 

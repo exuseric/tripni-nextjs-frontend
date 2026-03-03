@@ -1,10 +1,10 @@
 import { BaseService } from "@/data/services/base.service";
 import { CreateUser, User } from "@/data/models/user.model";
-import { API_URLS } from "@/common/constants";
+import { LINKS } from "@/common/constants/url.constant";
 import { httpClient } from "@/data/services/lib/create-http-client";
 
 class UserService extends BaseService<User, CreateUser> {
-  constructor(path = API_URLS.users) {
+  constructor(path = LINKS.API.users) {
     super(path, httpClient);
   }
   private scope(subPath: string): UserService {

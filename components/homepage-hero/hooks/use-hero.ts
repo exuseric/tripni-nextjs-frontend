@@ -1,4 +1,4 @@
-import { TOP_LEVEL_LINKS } from "@/common/constants";
+import { LINKS } from "@/common/constants/url.constant";
 
 const data = [
   {
@@ -7,8 +7,12 @@ const data = [
     description:
       "From the urban pulse of Nairobi to the serene shores of Watamu, Tripni is the first travel logger designed specifically for the Kenyan traveler.",
     cta: {
-      label: "Get Started",
-      link: TOP_LEVEL_LINKS.trips,
+      label: "Start A Trip",
+      link: LINKS.PROTECTED.trips,
+    },
+    secondaryCta: {
+      label: "Explore Feed",
+      link: LINKS.PUBLIC.feed,
     },
   },
 ];
