@@ -7,7 +7,7 @@ import { CompassIcon, MapPinIcon } from "@phosphor-icons/react/dist/ssr";
 export const HomepageHero = () => {
   const data = useHero("1");
   return (
-    <section className="bg-backgound min-h-screen py-container-block container" id="homepageHero">
+    <section className="bg-background min-h-screen py-container-block container" id="homepageHero">
       <div className="grid grid-cols-4 md:grid-cols-12 grid-rows-[repeat(3,auto)] md:grid-rows-[repeat(2,auto)] gap-4 md:gap-x-6 h-fit w-full">
         <Heading variant="hero" align="center" className="col-span-full md:col-span-6 md:row-start-2">
           <Title>{data?.title}</Title>
