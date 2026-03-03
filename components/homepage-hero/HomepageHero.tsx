@@ -27,12 +27,16 @@ export const HomepageHero = () => {
           </Actions>
         </Heading>
         <ImageWidget
-          src="https://picsum.photos/200/300"
+          src={data?.images.landscape ?? "https://picsum.photos/400/200"}
+          width={400}
+          height={200}
           shape="semicircle-l"
           className="col-start-1 col-span-full md:col-span-4 row-start-1 row-span-1 w-full h-40 md:h-50"
         />
         <ImageWidget
-          src="https://picsum.photos/300/200"
+          src={data?.images.portrait ?? "https://picsum.photos/250/500"}
+          width={250}
+          height={500}
           shape="semicircle-t"
           className="-col-start-1 md:col-start-7 md:col-end-9 -col-end-3 -row-start-1 md:row-start-1 -row-end-2 md:-row-end-1 w-full h-60 md:h-full md:w-60"
         />

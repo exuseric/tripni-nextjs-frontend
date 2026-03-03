@@ -14,6 +14,10 @@ const data = [
       label: "Explore Feed",
       link: LINKS.PUBLIC.feed,
     },
+    images: {
+      portrait: "https://cwa85we8af.ufs.sh/f/SO1ud1ITdHjyQsrWv2dLnfoPlZXT6V8BS4ANhidU3Iqvs0MY",
+      landscape: "https://cwa85we8af.ufs.sh/f/SO1ud1ITdHjyM3kOl9wpJhPdquISvc30fm25ZAUabOsHBXTo",
+    },
   },
 ];
 
