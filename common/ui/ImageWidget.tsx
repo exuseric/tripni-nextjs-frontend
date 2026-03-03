@@ -34,7 +34,15 @@ type ImageWidgetProps = {
 export const ImageWidget = ({ src = "https://placehold.co/400.webp", alt, className, shape, aspect }: ImageWidgetProps) => {
   return (
     <div className={imageWidgetStyles({ shape, aspect, className })}>
-      <Image src={src} alt={alt ?? ""} fill style={{ objectFit: "cover" }} role={alt ? undefined : "presentation"} className="w-full h-full" />
+      <Image
+        src={src}
+        alt={alt ?? ""}
+        style={{ objectFit: "cover" }}
+        role={alt ? undefined : "presentation"}
+        className="w-full h-full"
+        width={500}
+        height={500}
+      />
     </div>
   );
 };
