@@ -124,8 +124,11 @@
     --ease-animation-out: var(--easing-emphasized-decelerate);
     --ease-animation-in-out: var(--easing-emphasized);
 
-    --spacing-container-block: theme("spacing.32");
+    --spacing-container-block: theme("spacing.24");
+    --spacing-container-block-sm: theme("spacing.12");
     --spacing-nav-height: theme("spacing.12");
+    --spacing-safe-bottom: calc(0.2em + env(safe-area-inset-bottom, theme("spacing.4")));
+    --spacing-safe-top: calc(0.2em + env(safe-area-inset-top, theme("spacing.4")));
     /* Elevation Level 0 - No elevation */
     --shadow-level-0: none;
 
@@ -169,7 +172,7 @@ button {
 
 /* Container Utilities */
 @utility container {
-    @apply max-w-7xl mx-auto px-4;
+    @apply w-full max-w-7xl mx-auto px-4 small-screen-grid sm:large-screen-grid;
 }
 
 @utility container-sm {
@@ -186,6 +189,14 @@ button {
 
 @utility container-fluid {
     @apply max-w-full mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/*Container Grids*/
+@utility small-screen-grid {
+    @apply grid grid-cols-[repeat(4,5.25rem)] auto-rows-max gap-4;
+}
+@utility large-screen-grid {
+    @apply grid grid-cols-[repeat(12,4.4rem)] auto-rows-max gap-6;
 }
 
 /* Flexbox Row Utilities */
