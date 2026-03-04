@@ -3,7 +3,7 @@
 @utility btn {
     @apply inline-flex items-center justify-center
            font-medium text-sm leading-5 tracking-[0.00625rem]
-           rounded-4xl
+           rounded-4xl min-w-[4.7rem]
            cursor-pointer select-none whitespace-nowrap min-h-10
            duration-200 ease-in-out;
 
@@ -56,7 +56,7 @@
 }
 
 @utility btn-filled-tonal {
-    @apply btn gap-2 px-6 py-2.5 border-none bg-secondary-container text-on-secondary-container shadow-level-0 transition-[background-color,box-shadow,transform];
+    @apply btn gap-2 px-6 py-2.5 border-none bg-primary-fixed text-primary shadow-level-0 transition-[background-color,box-shadow,transform];
 
     &:hover {
         @apply shadow-level-1 bg-[color-mix(in_srgb,var(--color-on-secondary-container)_8%,var(--color-secondary-container))];
@@ -88,7 +88,7 @@
 }
 
 @utility btn-text {
-    @apply btn gap-x-2 gap-y-1 px-4 py-2.5 border-none bg-transparent text-primary transition-[background-color,transform,color];
+    @apply btn gap-x-2 gap-y-1 px-4 py-2.5 border-none bg-transparent text-on-surface transition-[background-color,transform,color];
 
     &:hover {
         @apply bg-[color-mix(in_srgb,var(--color-primary)_8%,transparent)];
@@ -168,6 +168,22 @@
 
     &:active {
         @apply bg-[color-mix(in_srgb,var(--color-on-surface-variant)_12%,transparent)];
+    }
+}
+
+@utility btn-icon-danger {
+    @apply btn-icon-base border-none bg-error text-on-error transition-[background-color,transform];
+
+    &:hover {
+        @apply bg-[color-mix(in_srgb,var(--color-on-error)_8%,var(--color-error))];
+    }
+
+    &:focus-visible {
+        @apply outline-error bg-[color-mix(in_srgb,var(--color-on-error)_12%,var(--color-error))];
+    }
+
+    &:active {
+        @apply bg-[color-mix(in_srgb,var(--color-on-error)_12%,var(--color-error))];
     }
 }
 

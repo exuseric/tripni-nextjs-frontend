@@ -1,13 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React from "react";
 import { Link as AriaLink, LinkProps as AriaLinkProps, composeRenderProps } from "react-aria-components";
-import { buttonStyles, ButtonVariant, ButtonSize } from "./button-styles";
+import { ButtonSize, buttonStyles, ButtonVariant } from "./button-styles";
 
 // Correctly extend AriaLinkProps without omitting className
 interface LinkProps extends AriaLinkProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  isIconOnly?: boolean;
 }
 
 /**
@@ -32,7 +32,7 @@ const isInternalNextLink = (href: string): boolean => {
 };
 
 export function Link(props: LinkProps) {
-  const { className, variant = 'quiet', size, href, ...rest } = props;
+  const { className, variant = 'quiet', size, href, isIconOnly, ...rest } = props;
   const router = useRouter();
 
   const renderClassName = composeRenderProps(className, (cls, renderProps) =>
@@ -40,6 +40,7 @@ export function Link(props: LinkProps) {
       ...renderProps,
       variant,
       size,
+      isIconOnly,
       className: cls,
     }),
   );

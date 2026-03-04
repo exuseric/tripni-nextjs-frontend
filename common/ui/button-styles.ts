@@ -3,7 +3,7 @@ import { focusRing } from '@/common/lib/react-aria-utils';
 
 export const buttonStyles = tv({
   extend: focusRing,
-  base: "group btn [-webkit-tap-highlight-color:transparent] [&:has(>svg:only-child)]:px-0 [&:has(>svg:only-child)]:h-8 [&:has(>svg:only-child)]:w-8",
+  base: "group btn [-webkit-tap-highlight-color:transparent]",
   variants: {
     variant: {
       primary: "btn-filled",
@@ -14,8 +14,18 @@ export const buttonStyles = tv({
     },
     size: {
       sm: "btn-sm",
+    },
+    isIconOnly: {
+      true: "p-1",
     }
   },
+  compoundVariants: [
+    { variant: 'primary', isIconOnly: true, class: 'btn-icon-filled' },
+    { variant: 'secondary', isIconOnly: true, class: 'btn-icon-outlined' },
+    { variant: 'tonal', isIconOnly: true, class: 'btn-icon-filled-tonal' },
+    { variant: 'destructive', isIconOnly: true, class: 'btn-icon-danger' },
+    { variant: 'quiet', isIconOnly: true, class: 'btn-icon' },
+  ],
   defaultVariants: {
     variant: "primary",
   }

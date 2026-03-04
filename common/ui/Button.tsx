@@ -6,6 +6,7 @@ import { buttonStyles, ButtonVariant, ButtonSize } from "./button-styles";
 export interface ButtonProps extends RACButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  isIconOnly?: boolean;
 }
 
 export function Button(props: ButtonProps) {
@@ -29,7 +30,15 @@ export function Button(props: ButtonProps) {
   return (
     <RACButton
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) => buttonStyles({ ...renderProps, variant: props.variant, size: props.size, className }))}
+      className={composeRenderProps(props.className, (className, renderProps) => 
+        buttonStyles({ 
+          ...renderProps, 
+          variant: props.variant, 
+          size: props.size, 
+          isIconOnly: props.isIconOnly,
+          className 
+        })
+      )}
     >
       {composeRenderProps(props.children, (children, { isPending }) => (
         <>

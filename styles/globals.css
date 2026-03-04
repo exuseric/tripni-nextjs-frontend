@@ -193,7 +193,7 @@ button {
 
 /*Container Grids*/
 @utility small-screen-grid {
-    @apply grid grid-cols-[repeat(4,5.25rem)] auto-rows-max gap-4;
+    @apply grid grid-cols-[repeat(4,minmax(5.25rem,6rem))] auto-rows-max gap-4;
 }
 @utility large-screen-grid {
     @apply grid grid-cols-[repeat(12,4.4rem)] auto-rows-max gap-6;
