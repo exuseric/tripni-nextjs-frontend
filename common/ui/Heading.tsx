@@ -1,13 +1,14 @@
 'use client';
-import React, {createContext, useContext, useMemo} from 'react';
-import {tv} from 'tailwind-variants';
+import React, { createContext, useContext, useMemo } from 'react';
+import { tv } from 'tailwind-variants';
+import { cn } from '@/common/lib/utils';
 
 // 1. Style Definition with Slots
 const headingStyles = tv({
     slots: {
         wrapper: 'flex flex-col',
         title: 'font-heading tracking-tight capitalize',
-        description: 'text-muted-foreground max-w-prose',
+        description: 'max-w-prose font-body',
         actions: 'flex flex-wrap gap-4 mt-4'
     },
     variants: {
@@ -22,16 +23,19 @@ const headingStyles = tv({
                 title: 'max-w-[50ch]'
             },
             card: {
-                wrapper: 'gap-1',
+                wrapper: 'gap-1.5',
+                title: 'text-xl font-bold leading-tight',
+                description: 'text-sm font-medium',
+                actions: 'mt-2 gap-3'
             }
         },
         level: {
-            h1: {title: 'text-4xl md:text-5xl font-[900] max-w-[15ch]'},
-            h2: {title: 'text-2xl md:text-3xl font-bold'},
-            h3: {title: 'text-2xl md:text-3xl font-bold'},
-            h4: {title: 'text-xl md:text-2xl font-semibold'},
-            h5: {title: 'text-lg md:text-xl font-semibold'},
-            h6: {title: 'text-base md:text-lg font-medium'}
+            h1: { title: 'text-4xl md:text-5xl font-[900] max-w-[15ch]' },
+            h2: { title: 'text-2xl md:text-3xl font-bold' },
+            h3: { title: 'text-2xl md:text-3xl font-bold' },
+            h4: { title: 'text-xl md:text-2xl font-semibold' },
+            h5: { title: 'text-lg md:text-xl font-semibold' },
+            h6: { title: 'text-base md:text-lg font-medium' }
         },
         align: {
             left: {
@@ -46,19 +50,46 @@ const headingStyles = tv({
                 wrapper: 'items-end text-right',
                 actions: 'justify-end'
             }
+        },
+        color: {
+            default: {
+                title: 'text-on-surface',
+                description: 'text-muted-foreground'
+            },
+            inverse: {
+                title: 'text-white',
+                description: 'text-white'
+            },
+            inherit: {
+                title: 'text-inherit',
+                description: 'text-inherit'
+            },
+            primary: {
+                title: 'text-primary',
+                description: 'text-primary'
+            }
         }
     },
     compoundVariants: [
         {
             variant: 'hero',
             level: 'h1',
-            class: {title: 'text-5xl md:text-6xl'}
+            class: { title: 'text-5xl md:text-6xl' }
+        },
+        {
+            variant: 'card',
+            color: 'default',
+            class: {
+                title: 'text-on-surface',
+                description: 'text-on-surface-variant/80'
+            }
         }
     ],
     defaultVariants: {
         variant: 'page',
         align: 'left',
-        level: 'h1'
+        level: 'h1',
+        color: 'default'
     }
 });
 
@@ -66,6 +97,7 @@ const headingStyles = tv({
 type HeadingContextValue = {
     variant?: 'hero' | 'page' | 'card';
     align?: 'left' | 'center' | 'right';
+    color?: 'default' | 'inverse' | 'inherit' | 'primary';
 };
 
 const HeadingContext = createContext<HeadingContextValue | undefined>(undefined);
@@ -73,8 +105,7 @@ const HeadingContext = createContext<HeadingContextValue | undefined>(undefined)
 const useHeadingContext = () => {
     const context = useContext(HeadingContext);
     if (!context) {
-        // Return defaults if not used within a Heading provider
-        return {variant: 'page', align: 'left'} as HeadingContextValue;
+        return { variant: 'page', align: 'left', color: 'default' } as HeadingContextValue;
     }
     return context;
 };
@@ -91,13 +122,13 @@ type ActionsProps = React.HTMLAttributes<HTMLDivElement>;
 
 // 4. Components
 const Heading = React.forwardRef<HTMLDivElement, HeadingProps>(
-    ({variant = 'page', align = 'left', className, children, ...props}, ref) => {
-        const {wrapper} = headingStyles({variant, align});
-        const value = useMemo(() => ({variant, align}), [variant, align]);
+    ({ variant = 'page', align = 'left', color = 'default', className, children, ...props }, ref) => {
+        const { wrapper } = headingStyles({ variant, align, color });
+        const value = useMemo(() => ({ variant, align, color }), [variant, align, color]);
 
         return (
             <HeadingContext.Provider value={value}>
-                <div ref={ref} className={wrapper({className})} {...props}>
+                <div ref={ref} className={wrapper({ className: cn(wrapper(), className) })} {...props}>
                     {children}
                 </div>
             </HeadingContext.Provider>
@@ -107,33 +138,33 @@ const Heading = React.forwardRef<HTMLDivElement, HeadingProps>(
 Heading.displayName = 'Heading';
 
 const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
-    ({level = 'h1', className, ...props}, ref) => {
-        const {variant, align} = useHeadingContext();
-        const {title} = headingStyles({variant, align, level});
+    ({ level = 'h1', className, ...props }, ref) => {
+        const { variant, align, color } = useHeadingContext();
+        const { title } = headingStyles({ variant, align, level, color });
         const Tag = level as React.ElementType;
-        return <Tag ref={ref} className={title({className})} {...props} />;
+        return <Tag ref={ref} className={cn(title(), className)} {...props} />;
     }
 );
 Title.displayName = 'Heading.Title';
 
 const Description = React.forwardRef<HTMLParagraphElement, DescriptionProps>(
-    ({className, ...props}, ref) => {
-        const {variant, align} = useHeadingContext();
-        const {description} = headingStyles({variant, align});
-        return <p ref={ref} className={description({className})} {...props} />;
+    ({ className, ...props }, ref) => {
+        const { variant, align, color } = useHeadingContext();
+        const { description } = headingStyles({ variant, align, color });
+        return <p ref={ref} className={cn(description(), className)} {...props} />;
     }
 );
 Description.displayName = 'Heading.Description';
 
 const Actions = React.forwardRef<HTMLDivElement, ActionsProps>(
-    ({className, ...props}, ref) => {
-        const {variant, align} = useHeadingContext();
-        const {actions} = headingStyles({variant, align});
-        return <div ref={ref} className={actions({className})} {...props} />;
+    ({ className, ...props }, ref) => {
+        const { variant, align, color } = useHeadingContext();
+        const { actions } = headingStyles({ variant, align, color });
+        return <div ref={ref} className={cn(actions(), className)} {...props} />;
     }
 );
 Actions.displayName = 'Heading.Actions';
 
 // 5. Export all components and types
-export {Heading, Title, Description, Actions};
-export type {HeadingProps, TitleProps, DescriptionProps, ActionsProps};
+export { Heading, Title, Description, Actions };
+export type { HeadingProps, TitleProps, DescriptionProps, ActionsProps };
