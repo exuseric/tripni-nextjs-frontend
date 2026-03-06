@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import { composeRenderProps, Button as RACButton, ButtonProps as RACButtonProps } from "react-aria-components";
 import { buttonStyles, ButtonVariant, ButtonSize } from "./button-styles";
 
@@ -42,10 +42,7 @@ export function Button(props: ButtonProps) {
     >
       {composeRenderProps(props.children, (children, { isPending }) => (
         <>
-          <span className={isPending ? 'invisible' : ''}>
-            {children}
-          </span>
-          {isPending && (
+          {isPending ? (
             <span aria-hidden className="flex absolute inset-0 justify-center items-center">
               <svg
                 className="w-4 h-4 animate-spin"
@@ -66,7 +63,9 @@ export function Button(props: ButtonProps) {
                 />
               </svg>
             </span>
-          )}
+          ) : <>
+              {children}
+          </>}
         </>
       ))}
     </RACButton>
