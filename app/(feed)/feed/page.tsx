@@ -1,3 +1,9 @@
+import { Collections } from "@/app/(feed)/components/collections/Collections";
+
 export default function Feed() {
-  return <div className="container"></div>;
+  return (
+    <>
+      <Collections />
+    </>
+  );
 }
