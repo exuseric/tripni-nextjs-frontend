@@ -128,7 +128,7 @@
     --spacing-container-block-sm: theme("spacing.12");
     --spacing-nav-height: theme("spacing.12");
     --spacing-safe-bottom: calc(0.2em + env(safe-area-inset-bottom, theme("spacing.4")));
-    --spacing-safe-top: calc(0.2em + env(safe-area-inset-top, theme("spacing.4")));
+    --spacing-safe-top: calc(1em + env(safe-area-inset-top, theme("spacing.4")));
     /* Elevation Level 0 - No elevation */
     --shadow-level-0: none;
 
@@ -146,6 +146,10 @@
 
     /* Elevation Level 5 - 12dp (e.g., navigation drawer) */
     --shadow-level-5: 0px 4px 4px 0px rgb(var(--color-shadow) / 0.3), 0px 8px 12px 6px rgb(var(--color-shadow) / 0.15);
+
+    --radius-card: theme("spacing.2");
+    --radius-card-md: theme("spacing.4");
+    --radius-card-lg: theme("spacing.6");
 }
 
 body {
@@ -172,7 +176,11 @@ button {
 
 /* Container Utilities */
 @utility container {
-    @apply w-full max-w-7xl mx-auto px-4 small-screen-grid sm:large-screen-grid;
+    @apply w-full max-w-7xl mx-auto px-4 container-grid;
+}
+
+@utility container-grid {
+    @apply small-screen-grid sm:large-screen-grid;
 }
 
 @utility container-sm {
@@ -195,8 +203,9 @@ button {
 @utility small-screen-grid {
     @apply grid grid-cols-[repeat(4,minmax(5.25rem,6rem))] auto-rows-max gap-4;
 }
+
 @utility large-screen-grid {
-    @apply grid grid-cols-[repeat(12,4.4rem)] auto-rows-max gap-6;
+    @apply grid grid-cols-[repeat(12,minmax(4.4rem,5.25rem))] auto-rows-max gap-6;
 }
 
 /* Flexbox Row Utilities */
@@ -223,6 +232,10 @@ button {
 
 @utility flex-col-start {
     @apply flex flex-col justify-start;
+}
+
+@utility flex-col-end {
+    @apply flex flex-col justify-end;
 }
 
 @utility flex-col-center {
@@ -258,4 +271,13 @@ button {
 
 @utility flex-gap-4 {
     @apply flex gap-4;
+}
+
+@utility glass {
+
+    @apply backdrop-blur-3xl bg-surface-container-high/10 ring ring-primary/10 ring-inset;
+
+    @supports not (backdrop-filter: blur(1px)) {
+        @apply bg-surface-container-high ring ring-primary/10 ring-inset;
+    }
 }
