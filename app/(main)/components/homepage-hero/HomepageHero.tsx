@@ -1,6 +1,6 @@
 import { useHero } from "@/app/(main)/components/homepage-hero/hooks/use-hero";
 import { Actions, Description, Heading, Title } from "@/common/ui/Heading";
-import { Link } from "@/common/ui/Link";
+import { Link } from "@/common/ui/button/Link";
 import { CompassIcon, MapPinIcon } from "@phosphor-icons/react/dist/ssr";
 import { ImageWidget } from "@/common/ui/ImageWidget";
 

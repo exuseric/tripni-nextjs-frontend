@@ -1,7 +1,8 @@
 "use client";
-import React, { Fragment } from "react";
+import React from "react";
 import { composeRenderProps, Button as RACButton, ButtonProps as RACButtonProps } from "react-aria-components";
-import { buttonStyles, ButtonVariant, ButtonSize } from "./button-styles";
+import { ButtonSize, buttonStyles, ButtonVariant } from "./button-styles";
+import { useButtonGroup } from "./ButtonGroupContext";
 
 export interface ButtonProps extends RACButtonProps {
   variant?: ButtonVariant;
@@ -10,9 +11,13 @@ export interface ButtonProps extends RACButtonProps {
 }
 
 export function Button(props: ButtonProps) {
+  const group = useButtonGroup();
+  const variant = props.variant ?? group?.variant;
+  const size = props.size ?? group?.size;
+
   // Determine spinner stroke color based on the button variant's text color
   const spinnerStrokeColor = React.useMemo(() => {
-    switch (props.variant) {
+    switch (variant) {
       case "secondary":
       case "quiet":
         return "var(--color-primary)";
@@ -25,18 +30,18 @@ export function Button(props: ButtonProps) {
         // but white is a safer default for filled buttons.
         return "white";
     }
-  }, [props.variant]);
+  }, [variant]);
 
   return (
     <RACButton
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) => 
-        buttonStyles({ 
-          ...renderProps, 
-          variant: props.variant, 
-          size: props.size, 
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        buttonStyles({
+          ...renderProps,
+          variant,
+          size,
           isIconOnly: props.isIconOnly,
-          className 
+          className
         })
       )}
     >
@@ -64,7 +69,7 @@ export function Button(props: ButtonProps) {
               </svg>
             </span>
           ) : <>
-              {children}
+            {children}
           </>}
         </>
       ))}

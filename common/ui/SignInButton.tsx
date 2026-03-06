@@ -1,4 +1,4 @@
-import { Link } from "@/common/ui/Link";
+import { Link } from "@/common/ui/button/Link";
 import { LINKS } from "@/common/constants/url.constant";
 import { CompassIcon } from "@phosphor-icons/react/ssr";
 

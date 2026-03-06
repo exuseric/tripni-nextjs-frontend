@@ -1,5 +1,5 @@
 import { LINKS } from '@/common/constants/url.constant';
-import { Link } from '@/common/ui/Link';
+import { Link } from '@/common/ui/button/Link';
 import { PlusCircleIcon } from '@phosphor-icons/react/dist/ssr';
 import { MobileMenu } from '@/app/(feed)/components/navigation/components/MobileMenu';
 import { SmoothBlur } from '@/common/components/SmoothBlur';

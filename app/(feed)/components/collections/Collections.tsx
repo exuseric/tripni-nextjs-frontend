@@ -1,7 +1,9 @@
+import { Button } from "@/common/ui/button/Button";
+import { ButtonGroup } from "@/common/ui/button/ButtonGroup";
+import { Link } from "@/common/ui/button/Link";
 import { TallCardWithBlur } from "@/common/ui/cards/TallCardWithBlur";
-import { Title, Heading, Actions, Description } from "@/common/ui/Heading";
-import { PlusCircleIcon, HeartIcon } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/common/ui/Button";
+import { Actions, Description, Heading, Title } from "@/common/ui/Heading";
+import { BookmarkSimpleIcon, HeartIcon } from "@phosphor-icons/react/dist/ssr";
 
 const collections = [
   {
@@ -59,14 +61,19 @@ export const Collections = () => {
                     {card.description}
                   </Description>
                   <Actions className="justify-between w-full">
-                    <Button variant="tonal">
-                      Follow
-                      <PlusCircleIcon size={20} weight="fill" />
-                    </Button>
-                    <Button variant="quiet" className="text-current" isIconOnly={card.likes > 0}>
-                      <HeartIcon size={20} className="text-current flex-row-start items-center gap-x-1" />
-                      {card.likes > 0 && <span className="text-current">{card.likes}</span>}
-                    </Button>
+
+                    <Link href="/" variant="tonal">
+                      View Trips
+                    </Link>
+                    <ButtonGroup>
+                      <Button variant="quiet" size="sm" className="text-current gap-x-1">
+                        <BookmarkSimpleIcon size={20} />
+                      </Button>
+                      <Button variant="quiet" size="sm" className="text-current gap-x-1">
+                        <HeartIcon size={20} />
+                        {card.likes && <span>{card.likes}</span>}
+                      </Button>
+                    </ButtonGroup>
                   </Actions>
                 </Heading>
               </TallCardWithBlur>
