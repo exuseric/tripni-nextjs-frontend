@@ -20,12 +20,12 @@ export const NormalCard = ({ image, title, subtitle, description, actions, ...pr
                     <ImageWidget src={image} width={800} height={600} className="w-full aspect-4/3 group-hover/card:scale-105 transition-transform duration-500" />
                 </Card.Media>
             )}
-            <Card.Header>
+            <Card.Header align="center">
                 <Card.Title level="h3">{title}</Card.Title>
                 {subtitle && <Card.Subtitle>{subtitle}</Card.Subtitle>}
             </Card.Header>
-            <Card.Content>{description}</Card.Content>
-            {actions && <Card.Actions>{actions}</Card.Actions>}
+            {description && <Card.Content>{description}</Card.Content>}
+            {actions && !props.href && <Card.Actions>{actions}</Card.Actions>}
         </Card>
     );
 };

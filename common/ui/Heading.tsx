@@ -9,7 +9,7 @@ const headingStyles = tv({
         wrapper: 'w-full',
         title: 'font-heading tracking-tight capitalize',
         description: 'max-w-prose font-body',
-        actions: 'flex flex-wrap gap-4 mt-4'
+        actions: ''
     },
     variants: {
         variant: {
@@ -40,15 +40,15 @@ const headingStyles = tv({
         align: {
             left: {
                 wrapper: 'flex-col-start items-start text-left',
-                actions: 'justify-start'
+                actions: 'flex-col-start items-start justify-start'
             },
             center: {
-                wrapper: 'flex-col-center items-center text-center',
-                actions: 'justify-center'
+                wrapper: 'flex-center-col text-center',
+                actions: 'flex-center-col'
             },
             right: {
                 wrapper: 'flex-col-start items-end text-right',
-                actions: 'justify-end'
+                actions: 'flex-col-start items-end justify-end'
             },
             between: {
                 wrapper: 'flex-row-between items-center',

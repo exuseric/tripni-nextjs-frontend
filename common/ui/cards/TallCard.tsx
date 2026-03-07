@@ -31,7 +31,7 @@ export const TallCard = ({ image, title, subtitle, description, actions, withBlu
 
             <Card.Content className="pb-0!">
             </Card.Content>
-            {actions && <Card.Actions color="inverse">{actions}</Card.Actions>}
+            {actions && !props.href && <Card.Actions color="inverse">{actions}</Card.Actions>}
           </div>
         </SmoothBlur>
       ) : (
@@ -44,7 +44,7 @@ export const TallCard = ({ image, title, subtitle, description, actions, withBlu
           <Card.Content>
             {description}
           </Card.Content>
-          {actions && <Card.Actions>{actions}</Card.Actions>}
+          {actions && !props.href && <Card.Actions>{actions}</Card.Actions>}
         </div>
       )}
     </Card>

@@ -1,11 +1,13 @@
 "use client";
 import React, { createContext, useContext, useMemo } from "react";
+import Link from "next/link";
 import { cardStyles } from "./card-styles";
 import { Heading, Title, Description, Actions, HeadingProps, TitleProps, DescriptionProps, ActionsProps } from "../Heading";
 
 // --- Context ---
 type CardContextValue = {
   slots: ReturnType<typeof cardStyles>;
+  href?: string;
 };
 
 const CardContext = createContext<CardContextValue | undefined>(undefined);
@@ -22,24 +24,34 @@ const useCardContext = () => {
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "elevated" | "filled" | "outlined";
   isHoverable?: boolean;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
-export function Card({ variant, isHoverable, className, children, ...props }: CardProps) {
-  const slots = useMemo(() => cardStyles({ variant, isHoverable }), [variant, isHoverable]);
-  const contextValue = useMemo(() => ({ slots }), [slots]);
+export function Card({ variant, isHoverable, className, children, href, target, rel, ...props }: CardProps) {
+  const hoverable = isHoverable ?? (!!href);
+  const slots = useMemo(() => cardStyles({ variant, isHoverable: hoverable }), [variant, hoverable]);
+  const contextValue = useMemo(() => ({ slots, href }), [slots, href]);
+
+  const Component = href ? Link : "article";
 
   return (
     <CardContext.Provider value={contextValue}>
-      <div className={slots.root({ className })} {...props}>
+      <Component
+        className={slots.root({ className })}
+        {...(href ? { href, target, rel } : {})}
+        {...(props as any)}
+      >
         {children}
-      </div>
+      </Component>
     </CardContext.Provider>
   );
 }
 
 // --- Sub-components ---
 
-export interface CardHeaderProps extends HeadingProps {}
+export interface CardHeaderProps extends HeadingProps { }
 export function CardHeader({ className, variant = "card", ...props }: CardHeaderProps) {
   const { slots } = useCardContext();
   return (
@@ -47,14 +59,14 @@ export function CardHeader({ className, variant = "card", ...props }: CardHeader
   );
 }
 
-export interface CardTitleProps extends TitleProps {}
+export interface CardTitleProps extends TitleProps { }
 export function CardTitle({ level = "h3", ...props }: CardTitleProps) {
   return (
     <Title level={level} {...props} />
   );
 }
 
-export interface CardSubtitleProps extends DescriptionProps {}
+export interface CardSubtitleProps extends DescriptionProps { }
 export function CardSubtitle(props: CardSubtitleProps) {
   return (
     <Description {...props} />
@@ -88,9 +100,12 @@ export function CardFooter({ className, children, ...props }: React.HTMLAttribut
   );
 }
 
-export interface CardActionsProps extends ActionsProps {}
+export interface CardActionsProps extends ActionsProps { }
 export function CardActions(props: CardActionsProps) {
-  const { slots } = useCardContext();
+  const { slots, href } = useCardContext();
+
+  if (href) return null;
+
   return (
     <Actions className={slots.actions({ className: props.className })} {...props} />
   );

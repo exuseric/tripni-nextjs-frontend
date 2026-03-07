@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 export const cardStyles = tv({
   slots: {
     root: 'group/card relative flex flex-col overflow-hidden rounded-card-md transition-all duration-300 ease-emphasized',
-    header: 'p-5 pb-3',
+    header: 'p-3',
     media: 'relative w-full overflow-hidden bg-surface-container-low',
     content: 'flex-1 px-5 py-3 text-sm leading-relaxed text-on-surface-variant font-body',
     footer: 'px-5 py-4 pt-2 text-xs font-medium tracking-wide text-on-surface-variant/60 uppercase',
