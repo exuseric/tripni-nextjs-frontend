@@ -17,6 +17,9 @@ const API = {
   trips: "/trips",
   users: "/auth",
   destinations: "/destinations",
+  generalCollections: "/general-collections",
+  collections: "/collections",
+  regions: "/regions",
 };
 
 const AUTH = {
