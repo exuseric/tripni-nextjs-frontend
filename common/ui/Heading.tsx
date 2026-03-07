@@ -6,7 +6,7 @@ import { cn } from '@/common/lib/utils';
 // 1. Style Definition with Slots
 const headingStyles = tv({
     slots: {
-        wrapper: 'flex flex-col',
+        wrapper: 'w-full',
         title: 'font-heading tracking-tight capitalize',
         description: 'max-w-prose font-body',
         actions: 'flex flex-wrap gap-4 mt-4'
@@ -32,23 +32,27 @@ const headingStyles = tv({
         level: {
             h1: { title: 'text-4xl md:text-5xl font-[900] max-w-[15ch]' },
             h2: { title: 'text-2xl md:text-3xl font-bold' },
-            h3: { title: 'text-2xl md:text-3xl font-bold' },
-            h4: { title: 'text-xl md:text-2xl font-semibold' },
-            h5: { title: 'text-lg md:text-xl font-semibold' },
+            h3: { title: 'text-xl md:text-2xl font-bold' },
+            h4: { title: 'text-lg md:text-xl font-semibold' },
+            h5: { title: 'text-md md:text-lg font-semibold' },
             h6: { title: 'text-base md:text-lg font-medium' }
         },
         align: {
             left: {
-                wrapper: 'items-start text-left',
+                wrapper: 'flex-col-start items-start text-left',
                 actions: 'justify-start'
             },
             center: {
-                wrapper: 'items-center text-center',
+                wrapper: 'flex-col-center items-center text-center',
                 actions: 'justify-center'
             },
             right: {
-                wrapper: 'items-end text-right',
+                wrapper: 'flex-col-start items-end text-right',
                 actions: 'justify-end'
+            },
+            between: {
+                wrapper: 'flex-row-between items-center',
+                actions: 'justify-end mt-0'
             }
         },
         color: {
@@ -96,7 +100,7 @@ const headingStyles = tv({
 // 2. Context Definition
 type HeadingContextValue = {
     variant?: 'hero' | 'page' | 'card';
-    align?: 'left' | 'center' | 'right';
+    align?: 'left' | 'center' | 'right' | 'between';
     color?: 'default' | 'inverse' | 'inherit' | 'primary';
 };
 

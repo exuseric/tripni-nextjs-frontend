@@ -1,11 +1,8 @@
 "use client";
-import { Button } from "@/common/ui/button/Button";
-import { ButtonGroup } from "@/common/ui/button/ButtonGroup";
 import { Link } from "@/common/ui/button/Link";
-import { TallCard } from "@/common/ui/cards/CardPresets";
+import { TallCard } from "@/common/ui/cards/TallCard";
 import { Carousel, CarouselContent, CarouselItem } from "@/common/ui/Carousel";
-import { Heading, Title } from "@/common/ui/Heading";
-import { BookmarkSimpleIcon, HeartIcon } from "@phosphor-icons/react/dist/ssr";
+import { Actions, Heading, Title } from "@/common/ui/Heading";
 
 const collections = [
   {
@@ -58,13 +55,18 @@ const collections = [
   },
 ];
 
-export const Collections = () => {
+export const CarouselCollections = () => {
   return (
     <div className="flex flex-col gap-12 py-8 overflow-x-hidden col-span-full">
       {collections.map((collection) => (
         <div key={collection.id} className="flex flex-col gap-6">
-          <Heading variant="page">
+          <Heading variant="page" align="between">
             <Title level="h2">{collection.title}</Title>
+            <Actions>
+              <Link href="#" variant="quiet">
+                Show all
+              </Link>
+            </Actions>
           </Heading>
 
           <Carousel gap="md" className="w-full">
