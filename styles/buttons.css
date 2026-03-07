@@ -4,7 +4,7 @@
     @apply inline-flex flex-row items-center justify-center
            font-medium text-sm leading-5 tracking-[0.00625rem]
            rounded-4xl min-w-[4.7rem]
-           cursor-pointer select-none whitespace-nowrap min-h-10
+           cursor-pointer select-none whitespace-nowrap min-h-11
            duration-200 ease-in-out;
 
     &:active {
