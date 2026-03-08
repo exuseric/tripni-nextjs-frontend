@@ -1,9 +1,15 @@
-import { Link } from '@/common/ui/button/Link';
 import { LINKS } from '@/common/constants/url.constant';
-import { BinocularsIcon, MagnifyingGlassIcon, PathIcon, UserCircleIcon, UserIcon } from '@phosphor-icons/react/dist/ssr';
+import { Link } from '@/common/ui/button/Link';
+import { BinocularsIcon, HouseSimpleIcon, MagnifyingGlassIcon, PathIcon, UserCircleIcon } from '@phosphor-icons/react/dist/ssr';
 
 
 const feedLinks = [
+    {
+        id: 6,
+        label: "home",
+        url: LINKS.PUBLIC.home,
+        icon: <HouseSimpleIcon size={20} weight="fill" />
+    },
     {
         id: 0,
         label: "explore",

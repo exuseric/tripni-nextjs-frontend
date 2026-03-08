@@ -1,21 +1,60 @@
 import { LINKS } from '@/common/constants/url.constant';
+import { ButtonGroup } from '@/common/ui/button/ButtonGroup';
 import { Link } from '@/common/ui/button/Link';
-import { PlusCircleIcon } from '@phosphor-icons/react/dist/ssr';
-import { MobileMenu } from '@/app/(feed)/components/navigation/components/MobileMenu';
-import { SmoothBlur } from '@/common/components/SmoothBlur';
+import { BottomBar, ActionBar, NavigationBar, NavigationBarItem } from '@/common/ui/navigation/bottom-bar/BottomBar';
+import { BinocularsIcon, MagnifyingGlassIcon, PathIcon, PlusCircleIcon, UserCircleIcon } from '@phosphor-icons/react/dist/ssr';
 
+
+const feedLinks = [
+    {
+        id: 0,
+        label: "explore",
+        url: LINKS.PAGES.PUBLIC.feed,
+        icon: <BinocularsIcon size={20} weight="regular" />,
+        activeIcon: <BinocularsIcon size={20} weight="fill" />
+    },
+    {
+        id: 1,
+        label: "Trips",
+        url: LINKS.PAGES.PROTECTED.trips,
+        icon: <PathIcon size={20} weight="regular" />,
+        activeIcon: <PathIcon size={20} weight="fill" />
+    },
+    {
+        id: 2,
+        label: "Find",
+        url: LINKS.PAGES.PUBLIC.search,
+        icon: <MagnifyingGlassIcon size={20} weight="regular" />,
+        activeIcon: <MagnifyingGlassIcon size={20} weight="fill" />
+    },
+    {
+        id: 3,
+        label: "profile",
+        url: LINKS.PAGES.PROTECTED.profile,
+        icon: <UserCircleIcon size={20} weight="regular" />,
+        activeIcon: <UserCircleIcon size={20} weight="fill" />
+    }
+]
 
 export const FeedMobileNavigation = () => {
     return (
-        <div className="bg-transparent flex-col-center pb-safe-bottom fixed inset-x-0 bottom-0 z-50 h-fit">
-            <div className="container">
-                <div className="col-span-full flex-row-between justify-center items-center gap-x-1">
-                    <MobileMenu />
-                    <Link href={LINKS.PROTECTED.createTrip} variant="tonal" aria-label="Create a trip" isIconOnly>
-                        <PlusCircleIcon size={32} weight="fill" />
-                    </Link>
-                </div>
-            </div>
-        </div>
+        <BottomBar>
+            <ActionBar>
+                <Link href={LINKS.PAGES.PROTECTED.createTrip} className="shadow-level-2" variant="primary" isIconOnly>
+                    <PlusCircleIcon size={20} weight="fill" />
+                </Link>
+            </ActionBar>
+            <NavigationBar>
+                {feedLinks.map((link) => (
+                    <NavigationBarItem
+                        key={link.id}
+                        href={link.url}
+                        label={link.label}
+                        icon={link.icon}
+                        activeIcon={link.activeIcon}
+                    />
+                ))}
+            </NavigationBar>
+        </BottomBar>
     );
 };
