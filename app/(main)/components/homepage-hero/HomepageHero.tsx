@@ -8,7 +8,7 @@ export const HomepageHero = () => {
   const data = useHero("1");
   return (
     <section className="min-h-screen py-container-block-sm sm:py-container-block flex-col-center" id="homepageHero">
-      <div className="container">
+      <div className="container container-grid">
         <Heading variant="hero" align="left" className="col-span-full row-start-2 row-span-1 md:col-span-6 md:row-start-2">
           <Title>{data?.title}</Title>
           <Description>{data?.description}</Description>

@@ -2,7 +2,7 @@ const TOP_LEVEL_PRIVATE_LINK = "/me";
 
 const PUBLIC = {
   home: "/",
-  feed: "/feed(.*)",
+  feed: "/feed",
   search: "/search",
   feedTrips: "/feed/trips",
   feedRegions: "/feed/regions",
