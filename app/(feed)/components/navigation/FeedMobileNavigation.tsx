@@ -1,7 +1,6 @@
 import { LINKS } from '@/common/constants/url.constant';
-import { ButtonGroup } from '@/common/ui/button/ButtonGroup';
 import { Link } from '@/common/ui/button/Link';
-import { BottomBar, ActionBar, NavigationBar, NavigationBarItem } from '@/common/ui/navigation/bottom-bar/BottomBar';
+import { ActionBar, BottomBar, NavigationBar, NavigationBarItem } from '@/common/ui/navigation/bottom-bar/BottomBar';
 import { BinocularsIcon, MagnifyingGlassIcon, PathIcon, PlusCircleIcon, UserCircleIcon } from '@phosphor-icons/react/dist/ssr';
 
 
@@ -40,7 +39,7 @@ export const FeedMobileNavigation = () => {
     return (
         <BottomBar>
             <ActionBar>
-                <Link href={LINKS.PAGES.PROTECTED.createTrip} className="shadow-level-2" variant="primary" isIconOnly>
+                <Link href={LINKS.PAGES.PROTECTED.createTrip} className="shadow-level-2" variant="primary" aria-label='Create a new trip' isIconOnly>
                     <PlusCircleIcon size={20} weight="fill" />
                 </Link>
             </ActionBar>

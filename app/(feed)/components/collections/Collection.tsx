@@ -1,6 +1,5 @@
 import { Link } from "@/common/ui/button/Link"
 import { Actions, Heading, Title } from "@/common/ui/Heading"
-import { regionService } from "@/data/services/region.service"
 import { ReactNode } from "react"
 
 type CollectionProps = {
