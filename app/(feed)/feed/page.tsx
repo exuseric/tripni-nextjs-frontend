@@ -1,11 +1,13 @@
-import { CarouselCollections } from "@/app/(feed)/components/collections/CarouselCollections";
-import { GridCollection } from "../components/collections/GridCollections";
+import { CuratedTrips } from "../components/CuratedTrips";
+import { PublicTrips } from "../components/PublicTrips";
+import { Regions } from "../components/Regions";
 
 export default function Feed() {
   return (
     <>
-      <CarouselCollections />
-      <GridCollection />
+      <CuratedTrips />
+      <Regions />
+      <PublicTrips />
     </>
   );
 }

@@ -25,17 +25,17 @@ export const TallCard = ({ image, title, subtitle, description, actions, withBlu
           <div className="translate-y-2 group-hover/card:translate-y-0 transition-transform duration-500 pb-4">
             <Card.Header className="pb-0" color="inverse">
               <Card.Title>{title}</Card.Title>
-              {/* {subtitle && <Card.Subtitle>{subtitle}</Card.Subtitle>} */}
+              {subtitle && <Card.Subtitle>{subtitle}</Card.Subtitle>}
               <Card.Subtitle color="inverse" className="opacity-80">{description}</Card.Subtitle>
             </Card.Header>
 
             <Card.Content className="pb-0!">
             </Card.Content>
-            {actions && <Card.Actions color="inverse">{actions}</Card.Actions>}
+            {actions && !props.href && <Card.Actions color="inverse">{actions}</Card.Actions>}
           </div>
         </SmoothBlur>
       ) : (
-        <div className="mt-auto relative z-10 bg-surface-container-high">
+        <div className="mt-auto relative z-10 bg-secondary-container">
           <Card.Header>
             <Card.Title>{title}</Card.Title>
             {subtitle && <Card.Subtitle>{subtitle}</Card.Subtitle>}
@@ -44,7 +44,7 @@ export const TallCard = ({ image, title, subtitle, description, actions, withBlu
           <Card.Content>
             {description}
           </Card.Content>
-          {actions && <Card.Actions>{actions}</Card.Actions>}
+          {actions && !props.href && <Card.Actions>{actions}</Card.Actions>}
         </div>
       )}
     </Card>

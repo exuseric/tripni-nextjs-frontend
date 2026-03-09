@@ -4,6 +4,9 @@ const PUBLIC = {
   home: "/",
   feed: "/feed",
   search: "/search",
+  feedTrips: "/feed/trips",
+  feedRegions: "/feed/regions",
+  feedCollections: "/feed/collections",
   auth: "/auth(.*)",
 };
 
@@ -27,9 +30,15 @@ const AUTH = {
   redirectAfterSignIn: "/",
 };
 
+const PAGES = {
+  PUBLIC,
+  PROTECTED
+};
+
 export const LINKS = {
   PUBLIC,
   PROTECTED,
   API,
   AUTH,
-};
+  PAGES
+}

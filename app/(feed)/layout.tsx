@@ -3,7 +3,9 @@ import { FeedMobileNavigation } from "./components/navigation/FeedMobileNavigati
 
 export default function FeedLayout({ children }: { children: ReactNode }) {
   return <>
-    <main className="container min-h-[1000px]">{children}</main>
+    <main className="min-h-dvh pb-[calc(var(--spacing-nav-height)+var(--spacing-safe-bottom))]">
+      {children}
+    </main>
     <FeedMobileNavigation />
   </>
 }
